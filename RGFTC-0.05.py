@@ -217,10 +217,38 @@ Meaning = {"Cavalier1" : "You will hear pleasant news.",
 }
 
 # class Card(object):
-	# to hold the 25 cards 
-	# Each card is denoted by a letter, to make later comparison between cards easier (we will need to determine
-	# which card comes "first"). (I skipped the letter i.)
-	# Tuple values are entered on each card in order from lowest number going clockwise around the card.
+        # to hold the 25 cards 
+        # Each card is denoted by a letter, to make later comparison between cards easier (we will need to determine
+        # which card comes "first"). (I skipped the letter i.)
+        # Tuple values are entered on each card in order from lowest number going clockwise around the card.
+
+
+class Deck(object): 
+        # a collection of 25 cards.
+	def __init__(self):
+		self.card = []
+
+	def __str__(self):
+		if self.card:
+			rep = ""
+			for card in self.card:
+				rep += str(card) + "  "
+		else:
+			rep = "<empty>"
+		return rep
+
+	def clear(self):
+		self.card = []
+
+	def add(self, card):
+		self.card.append(card)
+
+	def shuffle(self):
+		random.shuffle(self.card)
+
+	def printDeck(self):
+		for name, meaning in random.sample(Meaning.items(), numberofcards):
+			print ("{lhs} : {rhs}".format(lhs=name, rhs=meaning))
 
 a = ("Cavalier", "Cat", "Castle", "Moon")
 b = ("Cavalier", "Fire", "Pig", "Owl")
@@ -248,59 +276,63 @@ x = ("Heart", "Rooster", "Lily", "Cat")
 y = ("Letter", "Anchor", "Fish", "Pig")
 z = ("Lady", "Dagger", "Bread", "Horse")
 
-
-class Deck(object): 
-	# a collection of 25 cards.
-	def __init__(self):
-		self.card = []
-
-	def __str__(self):
-		if self.card:
-			rep = ""
-			for card in self.card:
-				rep += str(card) + "  "
-		else:
-			rep = "<empty>"
-		return rep
-
-	def clear(self):
-		self.card = []
-
-	def add(self, card):
-		self.card.append(card)
-
 class Grid(Deck):
-	# define an empty 5x5 grid to hold the 25 cards
-	def fill(self):
-		for x in range(25):
-			self.add(Grid())
+        # define an empty 5x5 grid to hold the 25 cards
+        def fill(self):
+                for x in range(25):
+                        self.add(Grid())
 
-	def shuffle(self):
-		random.shuffle(self.card)
+        def shuffle(self):
+                random.shuffle(self.card)
 
+# 	grid = [[0 for x in range(5)] for y in range(5)]
 
-
-	# grid = [[0 for x in range(5)] for y in range(5)]
-
-
-# def FillGrid():
-# 	for 0 in Grid.grid:
-#		return random.sample(Card())
-#	return Grid.grid
-
-	# def __getitem__(Card):
-	# maybe getitem will be useful: operator.__getitem__(a, b) - Return the value of a at index b.
-	# Standard operators as functions: http://docs.python.org/2/library/operator.html#operator.getitem
+#	def printGrid(self):
+#		for l in grid:
+#			for e in l:
+#				print e,
+#			print
 
 
 
 def PictureMeaning(numberofcards):
 # right now this is just to return a random single-picture reading so I know that part works
-	for name, meaning in random.sample(Meaning.items(), numberofcards):
-		print ("{lhs} : {rhs}".format(lhs=name, rhs=meaning))
+        for name, meaning in random.sample(Meaning.items(), numberofcards):
+                print ("{lhs} : {rhs}".format(lhs=name, rhs=meaning))
 
-			
+                        
 # -- Processing -- #
+
+deck = Deck()
+deck.add(a)
+deck.add(b)
+deck.add(c)
+deck.add(d)
+deck.add(e)
+deck.add(f)
+deck.add(g)
+deck.add(h)
+deck.add(j)
+deck.add(k)
+deck.add(l)
+deck.add(m)
+deck.add(n)
+deck.add(o)
+deck.add(p)
+deck.add(q)
+deck.add(r)
+deck.add(s)
+deck.add(t)
+deck.add(u)
+deck.add(v)
+deck.add(w)
+deck.add(x)
+deck.add(y)
+deck.add(z)
+
+deck.shuffle()
+
+print(deck)
 
 grid = Grid()
 grid.fill()
@@ -308,4 +340,5 @@ print (grid)
 
 
 print PictureMeaning(1)
+# this is just to prove that I can return a random reading
 
