@@ -216,41 +216,51 @@ Meaning = {"Cavalier1" : "You will hear pleasant news.",
 "Bread4" : "Having received something yourself, do not forget those surrounding you."
 }
 
-# class Card(object):
+class Card(object):
         # to hold the 25 cards 
         # Each card is denoted by a letter, to make later comparison between cards easier (we will need to determine
         # which card comes "first"). (I skipped the letter i.)
         # Tuple values are entered on each card in order from lowest number going clockwise around the card.
 
+    def __init__(self, top, bottom, left, right):
+        self.picturehalves = [top, bottom, left, right]
+
+    def __repr__(self):
+        return "Card(%s)"%self.picturehalves
+
+    def rotate(self):
+        self.picturehalves.insert(0, self.picturehalves.pop())
+
 
 class Deck(object): 
         # a collection of 25 cards.
-	def __init__(self):
-		self.card = []
+    def __init__(self):
+        self.cards = []
 
-	def __str__(self):
-		if self.card:
-			rep = ""
-			for card in self.card:
-				rep += str(card) + "  "
-		else:
-			rep = "<empty>"
-		return rep
+    def __str__(self):
+        if self.cards:
+            rep = ""
+            for card in self.cards:
+                rep += str(card) + "  "
+        else:
+            rep = "<empty>"
+        return rep
 
-	def clear(self):
-		self.card = []
+    def clear(self):
+        self.cards = []
 
-	def add(self, card):
-		self.card.append(card)
+    def add(self, card):
+        self.cards.append(card)
 
-	def shuffle(self):
-		random.shuffle(self.card)
+    def shuffle(self):
+        random.shuffle(self.cards)
 
-	def printDeck(self):
-		for name, meaning in random.sample(Meaning.items(), numberofcards):
-			print ("{lhs} : {rhs}".format(lhs=name, rhs=meaning))
+    def printDeck(self):
+        for name, meaning in random.sample(Meaning.items(), numberofcards):
+            print ("{lhs} : {rhs}".format(lhs=name, rhs=meaning))
 
-a = ("Cavalier", "Cat", "Castle", "Moon")
+
+a = Card("Cavalier", "Cat", "Castle", "Moon")
 b = ("Cavalier", "Fire", "Pig", "Owl")
 c = ("Clover", "Castle", "Handshake", "Birds")
 d = ("Clover", "Branches", "Stars", "Hearse")
@@ -276,22 +286,37 @@ x = ("Heart", "Rooster", "Lily", "Cat")
 y = ("Letter", "Anchor", "Fish", "Pig")
 z = ("Lady", "Dagger", "Bread", "Horse")
 
+
+
+
 class Grid(Deck):
-        # define an empty 5x5 grid to hold the 25 cards
+        # define an empty 5x5 grid to hold the 25 
+        def __init__(self, deck):
+            self.deck = deck
+
         def fill(self):
-                for x in range(25):
-                        self.add(Grid())
+            self.array = []
+
+            i = 0
+            random.shuffle(deck)
+            for r in range(5):
+                row = []
+                for c in range(5):
+                    row.append(deck[i])
+                    i = i+1
+                self.array.append(row)
+
 
         def shuffle(self):
-                random.shuffle(self.card)
+                random.shuffle(self.cards)
 
-# 	grid = [[0 for x in range(5)] for y in range(5)]
+#   grid = [[0 for x in range(5)] for y in range(5)]
 
-#	def printGrid(self):
-#		for l in grid:
-#			for e in l:
-#				print e,
-#			print
+#   def printGrid(self):
+#       for l in grid:
+#           for e in l:
+#               print e,
+#           print
 
 
 
@@ -303,40 +328,16 @@ def PictureMeaning(numberofcards):
                         
 # -- Processing -- #
 
-deck = Deck()
-deck.add(a)
-deck.add(b)
-deck.add(c)
-deck.add(d)
-deck.add(e)
-deck.add(f)
-deck.add(g)
-deck.add(h)
-deck.add(j)
-deck.add(k)
-deck.add(l)
-deck.add(m)
-deck.add(n)
-deck.add(o)
-deck.add(p)
-deck.add(q)
-deck.add(r)
-deck.add(s)
-deck.add(t)
-deck.add(u)
-deck.add(v)
-deck.add(w)
-deck.add(x)
-deck.add(y)
-deck.add(z)
+deck = [a, b, c, d, e, f, g, h, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z]
 
-deck.shuffle()
+grid = Grid(deck)
 
-print(deck)
-
-grid = Grid()
 grid.fill()
-print (grid)
+
+
+# grid = Grid()
+# grid.fill()
+# print (grid)
 
 
 print PictureMeaning(1)
