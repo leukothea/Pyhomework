@@ -288,9 +288,15 @@ class Grid(Deck):
             main = self.getCard(i, n)
             right = self.getCard(i+1, n)
             beneath = self.getCard(i, n+1)
-            main = tuple(main)
-            right = tuple(right)
-            beneath = tuple(beneath)
+            main = tuple(main[0])
+            right = tuple(right[0])
+            beneath = tuple(beneath[0])
+            hit = [(w) for w in (right) if w in (main)]
+            hit2 = [(w) for w in (beneath) if w in (main)]
+            return hit, hit2
+
+            # [(w) for w in (beneath) if w in (main)]
+
             # for w in main:
             #     if w in (right[0]):
             #         return w
@@ -298,11 +304,6 @@ class Grid(Deck):
             #         return w
             #     else:
             #         pass
-
-            [(w) for w in (right[0]) if w in (main)]
-            [(w) for w in (beneath[0]) if w in (main)]
-
-
 
 def PictureMeaning(numberofcards):
 # right now this is just to return a random single-picture reading so I know that part works
