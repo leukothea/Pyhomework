@@ -320,9 +320,6 @@ class Grid(Deck):
             return images
 
         def cardCompare(self, i, n):
-            # make an empty list of matches
-            self.hits = []
-
             # main part of function: get the images on the cards to be compared and cast the values as tuples. 
 
             # this case covers the bulk of the grid: cards that have both a right-adjacent and beneath card.
@@ -362,9 +359,6 @@ class Grid(Deck):
 
             else: 
                 print "There was an error!"
-
-            for item in self.hits:
-                print "Match: %r" %item
 
         # def loopThroughGrid(self):
         #     i = 0
