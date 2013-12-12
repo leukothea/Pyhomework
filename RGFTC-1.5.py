@@ -361,16 +361,6 @@ class Grid(Deck):
 
             return self.hits
 
-            # find matches and positions between the adjacent cards, add them to a list
-            # self.hits = []
-            # if i in range(3):
-            #     self.hits.append([(w) for w in (right) if w in (main)])
-            #     self.hits.append([(w) for w in (beneath) if w in (main)])
-            # elif i == 4:
-            #     self.hits.append([(w) for w in (right) if w in (main)])
-            # elif n == 4:
-            #     self.hits.append([(w) for w in (beneath) if w in (main)])
-            # return self.hits
 
 def PictureMeaning(numberofcards):
 # right now this is just to return a random single-picture reading so I know that part works
