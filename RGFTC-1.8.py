@@ -384,7 +384,6 @@ print deck
 
 # Fill a 5x5 grid with the shuffled cards and print it.  
 
-#grid = Grid(Deck)
 grid = Grid(deck)
 
 grid.fill()
