@@ -412,30 +412,14 @@ print grid.array
 # Starting at the top left, we compare the card to the immediate right and immediately beneath it for 
 # a match in picturehalves. 
 
-print grid.cardCompare(0,0)
-print grid.cardCompare(0,1)
-print grid.cardCompare(0,2)
-print grid.cardCompare(0,3)
-print grid.cardCompare(0,4)
-print grid.cardCompare(1,0)
-print grid.cardCompare(1,1)
-print grid.cardCompare(1,2)
-print grid.cardCompare(1,3)
-print grid.cardCompare(1,4)
-print grid.cardCompare(2,0)
-print grid.cardCompare(2,1)
-print grid.cardCompare(2,2)
-print grid.cardCompare(2,3)
-print grid.cardCompare(2,4)
-print grid.cardCompare(3,0)
-print grid.cardCompare(3,1)
-print grid.cardCompare(3,2)
-print grid.cardCompare(3,3)
-print grid.cardCompare(3,4)
-print grid.cardCompare(4,0)
-print grid.cardCompare(4,1)
-print grid.cardCompare(4,2)
-print grid.cardCompare(4,3)
+grid.hits = []
+for x in range(5):
+    for y in range(5):
+        if x==4 and y==4:
+            break 
+        grid.cardCompare(x, y) 
+        
+return self.hits
 
 # print PictureMeaning(1)
 # this is just to prove that I can return a random reading
