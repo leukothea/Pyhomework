@@ -301,6 +301,7 @@ class Grid(Deck):
         def __init__(self, deck):
             self.deck = deck
             self.hits = []
+            self.final = []
            
         def fill(self):
             # shuffle cards, then fill the grid with unique cards
@@ -363,8 +364,10 @@ class Grid(Deck):
             else: 
                 print "There was an error!"
 
-def pictureMeaning(Meaning):
-    dict.get(line)
+        # def finalLookup(self, readings, Meaning):
+        #     for line in readings:
+        #         lookup = (line)
+        #         return lookup + " : " + Meaning.get(lookup)
 
                         
 # -- Processing -- #
@@ -417,10 +420,9 @@ for item in grid.hits:
 
 print readings
 
-# Finally, look up those meanings in the big dictionary at the beginning of the program and return the list
+# Finally, look up those readinds in the "Meaning" dictionary and return the list
 
 for line in readings:
-    dict2 = eval(line)
-    pictureMeaning(dict2)
-
+    lookup = (line)
+    print lookup + " : " + Meaning.get(lookup)
 
