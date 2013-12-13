@@ -363,11 +363,6 @@ class Grid(Deck):
             else: 
                 print "There was an error!"
 
-        # def finalLookup(self, readings, Meaning):
-        #     for line in readings:
-        #         lookup = (line)
-        #         return lookup + " : " + Meaning.get(lookup)
-
                         
 # -- Processing -- #
 
