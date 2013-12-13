@@ -9,7 +9,6 @@ Catherine Warren
 # -- Data -- #
 # declare variables and constants. 
 
-from collections import defaultdict
 import random
 from random import randint
 
